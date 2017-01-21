@@ -1,0 +1,131 @@
+﻿{include file="public:header" /}
+    <!--轮播图start-->
+    <!-- <div class="wwindexbanner swiper-container-horizontal">
+        <ul class="swiper-wrapper clearfix">
+            
+            <li class="swiper-slide" mod-img="__PUBLIC__/2016/picture/banner1.jpg" pc-img="__PUBLIC__/2016/picture/banner1.jpg"><a href="javascript:;">
+                <img src="__PUBLIC__/2016/picture/banner1.jpg" /></a></li>
+            
+            <li class="swiper-slide" mod-img="__PUBLIC__/2016/picture/banner2.jpg" pc-img="__PUBLIC__/2016/picture/banner2.jpg"><a href="javascript:;">
+                <img src="__PUBLIC__/2016/picture/banner2.jpg" /></a></li>
+            
+            <li class="swiper-slide" mod-img="__PUBLIC__/2016/picture/banner3.jpg" pc-img="__PUBLIC__/2016/picture/banner3.jpg"><a href="javascript:;">
+                <img src="__PUBLIC__/2016/picture/banner3.jpg" /></a></li>
+            
+            <li class="swiper-slide" mod-img="__PUBLIC__/2016/picture/banner4.jpg" pc-img="__PUBLIC__/2016/picture/banner4.jpg"><a href="javascript:;">
+                <img src="__PUBLIC__/2016/picture/banner4.jpg" /></a></li>
+            
+            <li class="swiper-slide" mod-img="__PUBLIC__/2016/picture/banner5.jpg" pc-img="__PUBLIC__/2016/picture/banner5.jpg"><a href="javascript:;">
+                <img src="__PUBLIC__/2016/picture/banner5.jpg" /></a></li>
+            
+        </ul> -->
+        <div class="wwindexbannerbtn"></div>
+    </div>
+    <!--轮播图end-->
+
+
+    <!--content-->
+    <div class="wwmain">
+        <div class="wwmaincon">
+        {volist name="indexCate" id="ca"}
+            <div class="wwindexnews indexpos">
+                <div class="web">
+                    <h3 class="wwindextit"><a href="{$ca.url}">{$ca.p_name}</a></h3>
+                    <ul class="clearfix">
+                        
+                       {volist name="ca['sub']" id='info'}
+                        <li class="col-sm-6 col-lg-3">
+                            <a href="{$info.url}">
+                                <span><img src="{$info.thumb}" height="220" /></span>
+                                <h4>{$info.title}</h4>
+                                <p>{$info.description}</p>
+                            </a>
+                        </li>
+                        {/volist}
+                        
+                    </ul>
+                    <p class="wwindexnewmore"><a href="/index.php/Category/show/catid/{$ca.subid[0]}">了解更多</a></p>
+                </div>
+            </div>
+          {/volist}
+            
+        </div>
+    </div>
+
+
+
+    <!--content-->
+
+    
+<!--footer-->
+
+{include file="public:footer" /}
+
+<!---footer end-->
+<script src="__PUBLIC__/2016/js/jquery-1.12.2.min.js"></script>
+<script src="__PUBLIC__/2016/js/idangerous.swiper.min.js"></script>
+<script src="__PUBLIC__/2016/js/layout.js"></script>
+
+<div class="rightmenu">
+	{volist name="indexCate" id="ca"}
+        <div class="ico-box ico0{$i} wwico-box">
+            <a href="javascript:;" class="ico-cont ico-cont0{$i}">{$ca.p_name}</a>
+        </div>
+    {/volist}
+        <!-- <div class="ico-box ico02 wwico-box">
+            <a href="javascript:;" class="ico-cont ico-cont02">关于我们</a>
+        </div>
+        <div class="ico-box ico03 wwico-box">
+            <a href="javascript:;" class="ico-cont ico-cont03">产品展示</a>
+        </div>
+        <div class="ico-box ico04 wwico-box">
+            <a href="javascript:;" class="ico-cont ico-cont04">形象展示</a>
+        </div>
+        <div class="ico-box ico05 wwico-box">
+            <a href="javascript:;" class="ico-cont ico-cont05">企业文化</a>
+        </div> -->
+        <div class="ico-box ico06 backtop"></div>
+</div>
+ <script>
+       
+		$(function () {
+
+
+    //-------- 导航 --------
+
+
+    //-------- 判断分辨率 --------
+
+    $(window).resize(function () {
+
+    })
+
+    $(window).load(function () {
+        positioncont2();
+        $(window).resize(function () {
+            positioncont2();
+        })
+    })
+
+    function positioncont2() {
+
+        var overflowwid2 = $("body").css("overflow", "hidden").width();
+        var windowwid2 = $("body").removeAttr("style").width();
+        var scrollwid2 = overflowwid2 - windowwid2;
+		
+		if (windowwid2 + scrollwid2 > 991) {
+            $('.rightmenuin').addClass('rightmenuins')
+			$('.rightmenu').show();
+        }
+        else {
+            $('.rightmenuin').removeClass('rightmenuins')
+			$('.rightmenu').hide();
+        };
+		
+		
+	}
+	
+	})	
+    </script>
+</body>
+</html>
