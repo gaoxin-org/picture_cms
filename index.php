@@ -7,6 +7,6 @@ define('BIND_MODULE','index');
 require __DIR__ . '/thinkphp/start.php';
 
 // 检测程序安装
-if(!is_file(ROOT_PATH . 'data/install.lock')){
-	header('Location: ./install.php');
-}
+// if(!is_file(ROOT_PATH . 'data/install.lock')){
+// 	header('Location: ./install.php');
+// }
