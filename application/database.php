@@ -16,7 +16,8 @@ return [
     // 数据库用户名
     'username'    => 'root',
     // 数据库密码
-    'password'    => 'Tcgx07101106!@#',
+//     'password'    => 'Tcgx07101106!@#',
+		'password'    => 'mysql',
     // 数据库连接端口
     'hostport'    => '3306',
     // 数据库连接参数

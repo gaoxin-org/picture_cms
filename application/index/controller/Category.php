@@ -32,6 +32,12 @@ class Category extends Common
         }
         $this->assign('subcate', $subcate);
         $this->assign('samecate', $samecate);
+        
+        /* 轮播图图*/
+        $scroll_db = db('scroll');
+        $scroll_list =$scroll_db->where(['catid' => $catid])->where('status', 0)->limit(10);
+//         dump($scroll_list);
+        $this->assign('scroll_list', $scroll_list);
         /*文章列表start*/
         $article_db = db('article');
         if ($cate_info['ispart'] == 1) {
