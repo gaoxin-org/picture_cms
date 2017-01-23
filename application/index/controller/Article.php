@@ -19,6 +19,13 @@ class Article extends Common
             $this->error('栏目不存在');
         }
         $this->assign('category', new_html_special_chars($cate_info));
+//         dump($cate_info);
+        /* 轮播图图*/
+        $scroll_db = db('scroll');
+        $scroll_list = $scroll_db->where('catid',$cate_info['pid'])->where('status', 0)->limit(10)->select();
+        $this->assign('scroll_list', $scroll_list);
+        
+        
         /*栏目详情end*/
         /*文章详情start*/
         $article_info = $article_db->where('catid', $catid)->where('id', $id)->where('status', 0)->find();
