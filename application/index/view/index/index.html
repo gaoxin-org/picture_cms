@@ -1,24 +1,18 @@
 ﻿{include file="public:header" /}
     <!--轮播图start-->
-    <!-- <div class="wwindexbanner swiper-container-horizontal">
+     <div class="wwindexbanner swiper-container-horizontal">
         <ul class="swiper-wrapper clearfix">
             
-            <li class="swiper-slide" mod-img="__PUBLIC__/2016/picture/banner1.jpg" pc-img="__PUBLIC__/2016/picture/banner1.jpg"><a href="javascript:;">
-                <img src="__PUBLIC__/2016/picture/banner1.jpg" /></a></li>
+            {volist name="scroll_list" id ='s'}
+            <li class="swiper-slide" pc-img="{$s.thumb}" mobile-img="{$s.thumb}">
+                <a href="#">
+                    <img width=1440 height =225 src="{$s.thumb}">
+                </a>
+            </li>
+            {/volist}
             
-            <li class="swiper-slide" mod-img="__PUBLIC__/2016/picture/banner2.jpg" pc-img="__PUBLIC__/2016/picture/banner2.jpg"><a href="javascript:;">
-                <img src="__PUBLIC__/2016/picture/banner2.jpg" /></a></li>
             
-            <li class="swiper-slide" mod-img="__PUBLIC__/2016/picture/banner3.jpg" pc-img="__PUBLIC__/2016/picture/banner3.jpg"><a href="javascript:;">
-                <img src="__PUBLIC__/2016/picture/banner3.jpg" /></a></li>
-            
-            <li class="swiper-slide" mod-img="__PUBLIC__/2016/picture/banner4.jpg" pc-img="__PUBLIC__/2016/picture/banner4.jpg"><a href="javascript:;">
-                <img src="__PUBLIC__/2016/picture/banner4.jpg" /></a></li>
-            
-            <li class="swiper-slide" mod-img="__PUBLIC__/2016/picture/banner5.jpg" pc-img="__PUBLIC__/2016/picture/banner5.jpg"><a href="javascript:;">
-                <img src="__PUBLIC__/2016/picture/banner5.jpg" /></a></li>
-            
-        </ul> -->
+        </ul>
         <div class="wwindexbannerbtn"></div>
     </div>
     <!--轮播图end-->

@@ -17,6 +17,10 @@ class Index extends Common
 			}
 		}
 // 		dump($this->indexCate);
+		/* 轮播图图*/
+		$scroll_db = db('scroll');
+		$scroll_list = $scroll_db->where('status', 0)->limit(10)->select();
+		$this->assign('scroll_list', $scroll_list);
 		$this->assign('indexCate', new_html_entity_decode($this->indexCate));
 		return $this->fetch();
 		}
