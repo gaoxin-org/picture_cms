@@ -33,6 +33,10 @@ class Search extends Common
 		$this->assign('seo',$seo);
 		/*seo end*/
 		
+		/* 轮播图图*/
+		$scroll_db = db('scroll');
+		$scroll_list = $scroll_db->where('status', 0)->limit(10)->select();
+		$this->assign('scroll_list', $scroll_list);
 		
         return $this->fetch();
 		

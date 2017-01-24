@@ -15,7 +15,7 @@
                                     <option value="0">选择栏目</option>
                                     {volist name='cate_list' id='vo'}
                                     <option value="{$vo.catid}" {if condition="$catid"}selected="selected"{/if}>
-                                    {:str_repeat("└─",$vo['level'])}{$vo.catname}</option>
+                                    {:str_repeat("└─",1)}{$vo.catname}</option>
                                     {/volist}
                                 </select>
                             </td>

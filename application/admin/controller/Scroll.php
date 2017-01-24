@@ -11,9 +11,7 @@ class Scroll extends Common
     {   
         $q = input('q');
         $catid = input('catid');
-//         if (!empty($q)) {
-//             $map['title'] = ['like', '%' . strip_tags(trim($q)) . '%'];
-//         }
+
         if ($catid) {
             $map['catid'] = intval($catid);
         }
@@ -22,14 +20,12 @@ class Scroll extends Common
         }
         $scroll_list = db('scroll')->where($map)->order('listorder desc,id desc')->paginate(10, false);
         $page = $scroll_list->render();
-//         $cate_list = db('category')->order('listorder desc')->select();
-//         $cate_list = cTree($cate_list,0,0);
-//         $this->assign('q', $q);
+
         $cate_list = db('category')->where(["pid" =>0])->order('listorder desc')->select();
         $this->assign('catid', $catid);
         $this->assign('scroll_list', $scroll_list);
         $this->assign('cate_list', $cate_list);
-//         dump($page);
+
         $this->assign('page', $page);
         return $this->fetch();
     }
@@ -48,25 +44,7 @@ class Scroll extends Common
             if (empty($data['catid'])) {
                 $this->error('请选择栏目');
             }
-//             $rule = ['title' => 'require|max:100'];
-//             $msg = ['title.require' => '标题必须填写', 'title.max' => '标题最多不能超过100个字符'];
-//             $validate = new Validate($rule, $msg);
-//             if (!$validate->check(['title' => $data['title']])) {
-//                 $this->error($validate->getError());
-//             }
-//             $title = safe_replace($data['title']);
-//             if (isset($data['content'])) {
-//                 $data['content'] = auto_save_image($data['content']);
-//             } else {
-//                 $data['content'] = '';
-//             }
-			
-//             //自动提取摘要
-//             if ($data['description'] == '' && isset($data['content'])) {
-//                 $description_length = 200;
-//                 $data['description'] = str_cut(str_replace(["'", "\r\n", "\t", '&ldquo;', '&rdquo;', '&nbsp;'], '', strip_tags(stripslashes($data['content']))), $description_length);
-//                 $data['description'] = addslashes($data['description']);
-//             }
+
             //自动提取缩略图
             if ($data['thumb'] == '' && isset($data['content'])) {
                 $auto_thumb_no = 0;
@@ -74,15 +52,9 @@ class Scroll extends Common
                     $data['thumb'] = $matches[3][$auto_thumb_no];
                 }
             }
-//             $data['description'] = str_replace(['/', '\\', '#', '.', "'"], ' ', $data['description']);
-//             $data['keywords'] = str_replace(['/', '\\', '#', '.', "'"], ' ', $data['keywords']);
             foreach ($data['catid'] as $v) {
                 $id = db('scroll')->insertGetId([  'thumb' => $data['thumb'], 'catid' => $v]);
-//                 $url = __ROOT__ . '/index.php/Article/show/catid/' . $v . '/id/' . $id;
-//                 db('scroll')->where('id', $id)->update(['url' => $url]);
-//                 if (isset($data['keywords'])) {
-//                     $this->go_to_tag($id, $data['keywords']);
-//                 }
+
             }
             if (isset($data['dosubmit'])) {
                 $this->success('添加成功', 'Scroll/index');

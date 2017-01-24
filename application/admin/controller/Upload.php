@@ -7,6 +7,7 @@ class Upload extends Common
     public function picture()
     {
         $file = request()->file('file');
+        dump($file);
         $info = $file->move('./uploads/');
         if (!empty($info)) {
             $attachment['filename'] = $info->getFilename();
